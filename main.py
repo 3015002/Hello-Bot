@@ -4,6 +4,7 @@ import random
 import numpy as np
 from replit import db as db
 import time as t
+import keep_alive
 
 client = discord.Client()
 cmd = db["cmdcount"]
@@ -11,7 +12,6 @@ cmd = db["cmdcount"]
 
 @client.event
 async def on_ready():
-    #await client.change.presence(activity=discord.game('Hello!'))
     print('We have logged in as {0.user}!!!!!!'.format(client))
     print('AM PRO!!!')
 
@@ -19,13 +19,12 @@ async def on_ready():
     cmd = db["cmdcount"]
     print(keys)
     print(cmd)
+    keep_alive.keep_alive()
     #cmdchat = np.str(cmd)
     t.sleep(30)
-    #print(cmd)
-
     
 
-
+  
 @client.event
 async def on_message(message):
     if message.author == client.user:
@@ -103,6 +102,7 @@ async def on_message(message):
       elif fish <0.4:
         await message.channel.send("lol you caught nothing")
 
+
     #ping cmd
     elif message.content.startswith(';ping'):
         await message.channel.send('Pong!')
@@ -110,8 +110,17 @@ async def on_message(message):
 
     #help cmd
     elif message.content.startswith(';help'):
-        await message.channel.send(
-            ";hello  ;lottery  ;flip <heads/tails>  ;ping  ;invite  ;info")
+        embed = discord.Embed(title='Help', description='The commands for this bot.')
+        embed.add_field(name=':hello', value='Hello!', inline=False)
+        embed.add_field(name=';lottery', value='Do a fun lottery!!!!!')
+        embed.add_field(name=';flip <heads/tails>', value='Flip a coin!')
+        embed.add_field(name=';hunt', value='Go hunting and catch some animals')
+        embed.add_field(name=';fish', value='Go fishing and get some fish!!!')
+        embed.add_field(name=';ping', value="pong!")
+        embed.add_field(name=';help', value="the page you are seeing now")
+        embed.add_field(name=';info', value="Get some info on the bot")
+
+        await message.channel.send(embed=embed)
         db["cmdcount"] += 1
 
     #info cmd
@@ -119,10 +128,13 @@ async def on_message(message):
         cmdchat = np.str(cmd)
         await message.channel.send('Creator: COOL GAMER #8269')
         await message.channel.send('Name: Hello Bot #8848')
-        await message.channel.send('Code: Python 135 lines of code')
+        await message.channel.send('Code: Python 150 lines of code')
         await message.channel.send(
             'Coded with replit. Monitored using Uptimerobot')
         await message.channel.send("Commands issued: " + cmdchat + "")
+
+        embed = discord.Embed(title='Info', description='Some information on the bot.')
+        embed.add_field(name='')
         db["cmdcount"] += 1
 
     #invite cmd 
