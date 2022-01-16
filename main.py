@@ -22,6 +22,7 @@ async def on_ready():
     keep_alive.keep_alive()
     #cmdchat = np.str(cmd)
     t.sleep(30)
+    print(cmd)
     
 
   
@@ -97,16 +98,10 @@ async def on_message(message):
     #fish cmd
     elif message.content.startswith(';fish'):
       fishtype = 'salmon', 'cod', 'carp'
-      rarefish = 'tuna', 'shark', 'OP fish'
-      fishchance = random()
-      if fishchance > 0.1:
-        fish = random.choice(fishtype)
-        await message.channel.send('You caught a' + fish + '!')
-      
-      elif fishchance < 0.1:
-        rare = random.choice(rarefish)
-        await message.channel.send('OMFG you caught a' + rare + '!')
-
+      fish = random.choice(fishtype)
+      await message.channel.send('You caught a ' + fish + '!')
+      db['cmdcount'] += 1
+    
     #ping cmd
     elif message.content.startswith(';ping'):
         await message.channel.send('Pong!')
@@ -119,7 +114,7 @@ async def on_message(message):
         embed.add_field(name=';lottery', value='Do a fun lottery!!!!!')
         embed.add_field(name=';flip <heads/tails>', value='Flip a coin!')
         embed.add_field(name=';hunt', value='Go hunting and catch some animals')
-        embed.add_field(name=';fish', value='Go fishing and get some fish!!!')
+        #embed.add_field(name=';fish', value='Go fishing and get some fish!!!')
         embed.add_field(name=';ping', value="pong!")
         embed.add_field(name=';help', value="the page you are seeing now")
         embed.add_field(name=';info', value="Get some info on the bot")
