@@ -96,12 +96,16 @@ async def on_message(message):
 
     #fish cmd
     elif message.content.startswith(';fish'):
-      fish = random()
-      if fish >0.4:
-        await message.channel.send("You caught a fish!")
-      elif fish <0.4:
-        await message.channel.send("lol you caught nothing")
-
+      fishtype = 'salmon', 'cod', 'carp'
+      rarefish = 'tuna', 'shark', 'OP fish'
+      fishchance = random()
+      if fishchance > 0.1:
+        fish = random.choice(fishtype)
+        await message.channel.send('You caught a' + fish + '!')
+      
+      elif fishchance < 0.1:
+        rare = random.choice(rarefish)
+        await message.channel.send('OMFG you caught a' + rare + '!')
 
     #ping cmd
     elif message.content.startswith(';ping'):
@@ -130,7 +134,7 @@ async def on_message(message):
         await message.channel.send('Name: Hello Bot #8848')
         await message.channel.send('Code: Python 150 lines of code')
         await message.channel.send(
-            'Coded with replit. Monitored using Uptimerobot')
+            'Coded with replit. Monitored using Uptimerobot and Cron job')
         await message.channel.send("Commands issued: " + cmdchat + "")
 
         embed = discord.Embed(title='Info', description='Some information on the bot.')
