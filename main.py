@@ -21,8 +21,9 @@ async def on_ready():
     print(cmd)
     keep_alive.keep_alive()
     #cmdchat = np.str(cmd)
-    t.sleep(30)
-    print(cmd)
+    while True:
+      t.sleep(600)
+      print(cmd)
     
 
   
@@ -114,7 +115,7 @@ async def on_message(message):
         embed.add_field(name=';lottery', value='Do a fun lottery!!!!!')
         embed.add_field(name=';flip <heads/tails>', value='Flip a coin!')
         embed.add_field(name=';hunt', value='Go hunting and catch some animals')
-        #embed.add_field(name=';fish', value='Go fishing and get some fish!!!')
+        embed.add_field(name=';fish', value='Go fishing and get some fish!!!')
         embed.add_field(name=';ping', value="pong!")
         embed.add_field(name=';help', value="the page you are seeing now")
         embed.add_field(name=';info', value="Get some info on the bot")
@@ -125,15 +126,19 @@ async def on_message(message):
     #info cmd
     elif message.content.startswith(';info'):
         cmdchat = np.str(cmd)
-        await message.channel.send('Creator: COOL GAMER #8269')
-        await message.channel.send('Name: Hello Bot #8848')
-        await message.channel.send('Code: Python 150 lines of code')
-        await message.channel.send(
-            'Coded with replit. Monitored using Uptimerobot and Cron job')
-        await message.channel.send("Commands issued: " + cmdchat + "")
+        #await message.channel.send('Creator: COOL GAMER #8269')
+        #await message.channel.send('Name: Hello Bot #8848')
+        #await message.channel.send('Code: Python 150 lines of code')
+        #await message.channel.send(
+            #'Coded with replit. Monitored using Uptimerobot and Cron job')
+        #await message.channel.send("Commands issued: " + cmdchat + "")
 
         embed = discord.Embed(title='Info', description='Some information on the bot.')
-        embed.add_field(name='')
+        embed.add_field(name='Creator: COOL3163#4950', inline=False)
+        embed.add_field(name='Name: Hello Bot #8848')
+        embed.add_field(name='Code: Python')
+        embed.add_field(name='Coded with replit. Monitored using Uptimerobot and Cron job')
+        embed.add_field("Commands issued: " + cmdchat + "")
         db["cmdcount"] += 1
 
     #invite cmd 
