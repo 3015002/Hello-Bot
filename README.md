@@ -1,6 +1,6 @@
 # Hello-Bot
 
-Hello Bot is a discord bot coded by COOL3163#4950. This is coded using Replit and the token is an env file. It monitored using UptimeRobot and Cron-Job.com. 
+Hello Bot is a discord bot coded by COOL3163#4950. This is coded using Replit and the token is an env file. It monitored using UptimeRobot and Cron-Job.com. A better version is realeased and this repository will not be updated
 
 Links:
 https://replit.com/@ElliottDong/Hello-bot#main.py
