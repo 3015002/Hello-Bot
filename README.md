@@ -8,3 +8,5 @@ https://replit.com/@ElliottDong/Hello-bot#main.py
 https://stats.uptimerobot.com/GK08zFB2MV
 
 https://bf7jcscf.status.cron-job.org
+
+https://github.com/3015002/Hello-Bot-2.0
